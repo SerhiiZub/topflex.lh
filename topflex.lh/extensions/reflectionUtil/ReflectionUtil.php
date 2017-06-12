@@ -158,6 +158,10 @@ class ReflectionUtil
         } else {
             $object->isCloneable = "$name -- нельзя клонировать";
         }
+
+        if ($class->getParentClass()){
+            $object->parentClass = $class->getParentClass();
+        }
 //        var_dump($object);
         return $object;
     }
