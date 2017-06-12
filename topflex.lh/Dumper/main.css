@@ -1,0 +1,35 @@
+.mydump pre, p,
+.mydump [type="checkbox"]{
+    display: none;
+}
+
+.mydump [type="checkbox"]:checked ~ pre{
+    display: block;
+}
+.dump-content{
+    opacity: 1;
+}
+.dump-panel{
+    position: fixed;
+    bottom: 0;
+    left: 0px;
+    height: 30px;
+    width: 100%;
+    background-color: black;
+    color: aliceblue;
+    opacity: 0.8;
+    z-index: 9999;
+    padding-top: 4px;
+    padding-left: 10px;
+}
+.dump-pre {
+    position: fixed;
+    top: 20px; right: 20px; bottom: 40px; left: 20px;
+    z-index: 9998;
+    margin: 0;
+    background-color: darkgray;
+    opacity: 0.9;
+    padding: 20px;
+    overflow-y: scroll;
+    border-radius: 5px;
+}
