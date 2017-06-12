@@ -1,5 +1,12 @@
 <?php
 
+namespace reflectionUtil;
+
+use ReflectionClass;
+use ReflectionParameter;
+use ReflectionMethod;
+use reflectionUtil\data\ObjectData;
+
 /**
  * Created by PhpStorm.
  * User: Серега
@@ -28,6 +35,11 @@ class ReflectionUtil
         $class = $arg->getClass();
         $position = $arg->getPosition();
         $details[] = "\$$name position $position";
+        
+        if (!empty($declaringClass)){
+            $details[] = "\$$name declaring class $declaringClass";
+        }
+        
         if (!empty($class)){
             $className = $class->getName();
             $details[] = "\$$name must be object type of $className";
@@ -115,36 +127,38 @@ class ReflectionUtil
         return implode(array_slice($lines, $from-1, $len));
     }
 
-    public function classData(ReflectionClass $class)
+    public static function classData(ReflectionClass $class, ObjectData $object)
     {
+//        die('trum');
         $details = array();
         $name = $class->getName();
 
         if ($class->isUserDefined()){
-            $details[] = "$name -- класс определен пользователем";
+            $object->isUserDefined = "$name -- класс определен пользователем";
         }
         if ($class->isInternal()){
-            $details[] = "$name -- встроенный класс";
+            $object->isInternal = "$name -- встроенный класс";
         }
         if ($class->isInterface()){
-            $details[] = "$name -- интерфейс";
+            $object->isInterface = "$name -- интерфейс";
         }
         if ($class->isAbstract()){
-            $details[] = "$name -- абстрактный класс";
+            $object->isAbstract = "$name -- абстрактный класс";
         }
         if ($class->isFinal()){
-            $details[] = "$name -- финальный класс";
+            $object->isFinal = "$name -- финальный класс";
         }
         if ($class->isInstantiable()){
-            $details[] = "$name -- можно создать экземпляр класса";
+            $object->isInstantiable = "$name -- можно создать экземпляр класса";
         } else {
-            $details[] = "$name -- нельзя создать экземпляр класса";
+            $object->isInstantiable = "$name -- нельзя создать экземпляр класса";
         }
         if ($class->isCloneable()){
-            $details[] = "$name -- можно клонировать";
+            $object->isCloneable = "$name -- можно клонировать";
         } else {
-            $details[] = "$name -- нельзя клонировать";
+            $object->isCloneable = "$name -- нельзя клонировать";
         }
-        return $details;
+//        var_dump($object);
+        return $object;
     }
 }
