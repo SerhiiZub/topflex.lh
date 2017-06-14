@@ -11,10 +11,15 @@ use reflectionUtil\logger\sqllite\Db;
 class Logger
 {
     private $db;
+    private $tableName;
 
     public function __construct()
     {
         $this->db = new Db;
+    }
+
+    protected function tableName(){
+        $this->tableName = 'log';
     }
     
     public function find(){
@@ -40,8 +45,8 @@ class Logger
         
     }
 
-    public function serch()
+    public function search()
     {
-        
+
     }
 }
