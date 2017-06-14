@@ -7,17 +7,48 @@
  */
 
 function dmp($val){
-//    echo '<pre>';
+    echo '<pre>';
 //    echo '<plaintext>';
 
-//    echo '<code style="color: black">';
+    echo '<code style="color: black">';
     echo '<xmp style="size: 8px">';
     var_dump($val);
     echo '</xmp>';
-//    echo '</code>';
+    echo '</code>';
 
 //    echo '</plaintext>';
-//    echo '<pre>';
+    echo '<pre>';
+}
+
+function trace($arr){
+    $k = 0;
+    $str = '';
+    foreach ($arr as $value){
+        $arg = '';
+        if(!empty($value['args']) && $value['args'] != null){
+
+            for ($i=0; $i < count($value['args']); $i++){
+                $arg .= gettype($value['args'][$i]);
+                if($i < count($value['args'])-1){
+                    $arg .=' ,';
+                }
+            }
+        }
+
+
+        $str .= '#'.$k++.' - ';
+        $str .= !empty($value['class']) ? ucfirst($value['class']) : '';
+        $str .= !empty($value['type']) ? $value['type'] : '';
+        $str .= !empty($value['function']) ? $value['function']."($arg) : " : "";
+        $str .= !empty($value['file']) && !empty($value['line']) ? phpstormLink($value['file'], $value['line']) : '';
+        $str .= "<br>";
+    }
+    return $str;
+}
+
+function phpstormLink($file, $line){
+    $href = "phpstorm://open?file=$file&line=$line";
+    return "<a href='$href' style='text-decoration: none; float: right'>$file : $line</a>";
 }
 ?>
 
@@ -67,6 +98,9 @@ function dmp($val){
         display: none;
         cursor: pointer;
     }
+    .path{
+        float: right;
+    }
 </style>
 
 
@@ -76,15 +110,16 @@ function dmp($val){
         <?php foreach ($data as $k => $v) : ?>
             <div class="dumpItem">
             <span class="title" style="cursor: pointer">
-                    <span class="dump-label"><strong style="font-size: large" >Variable: <?php echo $k;?></strong></span>
+                    <span class="dump-label"><strong style="font-size: large" ><?php echo gettype($v['value'][0])?>: <?php echo $k;?></strong></span>
                     <a href="phpstorm://open?file=<?php echo $v['path']?>&line=<?php  echo $v['line']?>">
-                        <span>path: <?php echo $v['path']?>; Line: <?php  echo $v['line']?></span>
+                        <span class="path"><?php echo $v['path']?>  : <?php  echo $v['line']?></span>
                     </a>
             </span>
             <div class="dump-content" style="display: none;">
                     <?php foreach ($v['value'] as $key => $val) : ?>
                         <br/> <b>Item</b> - <?php echo $key;?>:<br/>
                             <div class="dump-container">
+                                <?php echo trace($v['trace'])?>
                              <?php dmp($val);?>
                             </div>
                     <?php endforeach;?>
@@ -92,6 +127,17 @@ function dmp($val){
             </div>
             <hr>
         <?php endforeach;?>
+        <?php
+//        session_start();
+//        if(isset($_SESSION['debug'])){
+//            dmp($_SESSION['debug']);
+//            $_SESSION['debug'] = '';
+//            unset($_SESSION['debug']);
+//            echo '<hr>';
+////            dmp($_SESSION['debug']);
+//        }
+
+        ?>
     </div>
 </div>
 

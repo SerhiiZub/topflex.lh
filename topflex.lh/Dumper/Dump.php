@@ -8,6 +8,7 @@ final class Dump {
     private $view = true;
     private $cookie = true;
     private $cookieTime = 3600;
+    private static $session = false;
 
     private function __construct() {}
 
@@ -22,7 +23,14 @@ final class Dump {
 //        echo '<hr>';
 //        echo 'hello';
 //                die('tut');
+        if(static::$session){
+            var_dump($_SESSION['debug']);
+            unset($_SESSION['debug']);
+            static::$session = false;
+
+        }
         echo $this->printDump();
+
 
     }
 
@@ -77,11 +85,12 @@ final class Dump {
      * @param $obj
      * @param null $name : string
      */
-    static public function out($obj, $name = null) {
+    static public function out($obj, $name = null, $stop = false, $session = false) {
 
         if (self::$instance == null) {
             self::$instance = new self();
         }
+
 
         $info = debug_backtrace();
         $key = 'Var-'.count(self::$instance->objects);
@@ -94,12 +103,27 @@ final class Dump {
                 self::$instance->objects[$name]['value'][] = $obj;
                 self::$instance->objects[$name]['path'] = $info[0]['file'];
                 self::$instance->objects[$name]['line'] = $info[0]['line'];
+                self::$instance->objects[$name]['trace'] = $info;
             }
 
         } else {
             self::$instance->objects[$key]['value'][] = $obj;
             self::$instance->objects[$key]['path'] = $info[0]['file'];
             self::$instance->objects[$key]['line'] = $info[0]['line'];
+//            unset($info[0]);
+            self::$instance->objects[$name]['trace'] = $info;
+        }
+
+        if ($stop !== false){
+//            $this->
+            exit();
+        }
+
+        if($session != false){
+
+//            $_SESSION['debug'] = var_export($obj, 1);
+//            static::$session = true;
+
         }
 
     }
