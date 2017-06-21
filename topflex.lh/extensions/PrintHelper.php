@@ -80,9 +80,9 @@ class PrintHelper
             self::setArrayOptions('li', array_diff($options['li'], array('', NULL)));
         }
 
-        $str = '<ul ' . self::getTagOptions('ul') . '>';
+        $str = '<ul ' . self::getTagOptions('ul') . '>'.PHP_EOL;
         foreach ($array as $key => $value){
-            $str .= '<li ' . self::getTagOptions('ul') . '>';
+            $str .= '<li ' . self::getTagOptions('ul') . '>'.PHP_EOL;
             if ($keyPrint) {
                 $str .= $key . ': ';
             }
@@ -94,17 +94,19 @@ class PrintHelper
                 $str .= $value;
             }
 
-            $str .= '</li>';
+            $str .= '</li>'.PHP_EOL;
         }
-        $str .= '</ul>';
+        $str .= '</ul>'.PHP_EOL;
         return $str;
     }
 
-    public static function table()
-    {
 
-    }
-
+    /**
+     * @param $msg
+     * @param string $href
+     * @param array $options
+     * @return string
+     */
     public static function link($msg, $href = '', $options = array('class' => '', 'style' => ''))
     {
         self::setArrayOptions('a', array_diff($options, array('', NULL)));
@@ -113,7 +115,7 @@ class PrintHelper
         $str .= self::getTagOptions('a');
         $str .= ">";
         $str .= $msg;
-        $str .= '</a>';
+        $str .= '</a>'.PHP_EOL;
         return $str;
     }
 
