@@ -1,6 +1,7 @@
 <?php
 namespace reflectionUtil;
 
+use reflectionUtil\logger\Logger;
 /**
  * Created by PhpStorm.
  * User: Серега
@@ -61,8 +62,17 @@ ini_set("display_errors", 1);
 
 
 $autoloader = new ClassAutoloader();
-$data = new ArrayData();
+/*$data = new ArrayData();
 $discovery = new DiscoverDataFactory($data);
-var_dump($discovery->obj);
+var_dump($discovery->obj);*/
+/*$log = new Logger();
+$log->id = 'id';
+
+$log->message = 'bla';
+$log->thread = 'bla';
+echo $log->id.PHP_EOL;
+echo $log->save().PHP_EOL;*/
+//echo $log->bla.PHP_EOL;
+//var_dump($log);
 
 //var_dump(new \ReflectionClass('reflectionUtil\data\ArrayData'));

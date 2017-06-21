@@ -21,7 +21,7 @@ namespace reflectionUtil\logger\sqllite;
 //{
 //
 //}
-class Db extends SQLite3
+class Db extends \SQLite3
 {
     function __construct()
     {
