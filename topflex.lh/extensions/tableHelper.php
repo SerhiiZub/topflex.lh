@@ -11,6 +11,8 @@
 
 class tableHelper extends PrintHelper
 {
+    private $columnName;
+    private $columnValue;
     private $thead = array();
     private $data = array();
     private $htmlOptions = array();
