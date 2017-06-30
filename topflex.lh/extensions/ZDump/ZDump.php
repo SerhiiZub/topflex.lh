@@ -47,6 +47,6 @@ class ZDump
     {
 //        die('tut');
         $view = new PrintManager();
-        $view->render('index', array('data' => '123456'));
+        echo $view->render('index', array('data' => '123456'));
     }
 }

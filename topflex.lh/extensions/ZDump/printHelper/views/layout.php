@@ -5,16 +5,18 @@
  * Date: 22.06.17
  * Time: 13:36
  */
-$path = dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR.'assets'.DIRECTORY_SEPARATOR.'bootstrap-3.3.7-dist'.DIRECTORY_SEPARATOR;
-$pathJquery = dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR.'assets'.DIRECTORY_SEPARATOR;
-
+$path = dirname(dirname(__FILE__)).DS.'assets'.DS.'bootstrap-3.3.7-dist'.DS;
+$pathJquery = dirname(dirname(__FILE__)).DS.'assets'.DS;
+//die(var_dump($path));
+//var_dump($this);
+//$this->test();
 ?>
 
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Title</title>-->
     <style>
         <?php include $path.'css/bootstrap.min.css';?>
         <?php include $path.'css/bootstrap-theme.min.css';?>
@@ -23,8 +25,8 @@ $pathJquery = dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR.'assets'.D
         <?php include $pathJquery.'jquery/jquery-3.2.1.min.js';?>
         <?php include $path.'js/bootstrap.min.js';?>
     </script>
-</head>
-<body>
+<!--</head>
+<body>-->
 <!-- Вкладки (навигация по панелям) -->
 <script type="text/javascript">
     $(document).ready(function(){
@@ -46,17 +48,17 @@ $pathJquery = dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR.'assets'.D
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg" style="width: 980px">
 
             <!-- Modal content-->
-            <div class="modal-content">
+            <div class="modal-content" style="">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Modal Header</h4>
                     <ul class="nav nav-tabs" id="myTabEvents">
                         <li class="active"><a class="tabnav" data-toggle="tab" href="#evPanel1">Панель 1</a></li>
                         <li><a class="tabnav" data-toggle="tab" href="#evPanel2">Панель 2</a></li>
-                        <li><a class="tabnav" data-toggle="tab" href="#evPanel3">Панель 3</a></li>
+                        <li><a class="tabnav" data-toggle="tab" href="#evPanel3">PHP Info</a></li>
                     </ul>
                 </div>
                 <div class="modal-body">
@@ -65,6 +67,7 @@ $pathJquery = dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR.'assets'.D
                         <!-- Панель 1 -->
                         <div id="evPanel1" class="tab-pane fade in active">
                             <!-- Содержимое панели 1 -->
+
                             <h3>Заголовок панели 1</h3>
                             <p>Содержимое панели 1...</p>
                         </div>
@@ -77,8 +80,7 @@ $pathJquery = dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR.'assets'.D
                         <!-- Панель 3 -->
                         <div id="evPanel3" class="tab-pane fade">
                             <!-- Содержимое панели 3 -->
-                            <h3>Заголовок панели 3</h3>
-                            <p>Содержимое панели 3...</p>
+                            <?php $this->renderPartial('tabs/phpInfo');?>
                         </div>
 
 <!--                        <hr>-->
@@ -96,5 +98,5 @@ $pathJquery = dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR.'assets'.D
     </div>
 
 </div>
-</body>
-</html>
+<!--</body>
+</html>-->

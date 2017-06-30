@@ -16,6 +16,7 @@ $this->title = 'My Yii Application';
         <?php
         echo 'hello';
         ZDump::debug();
+//        var_dump(ZDump::debug());
         ?>
     </div>
 
@@ -57,5 +58,5 @@ $this->title = 'My Yii Application';
     </div>
 </div>
 <?php
-ZDump::debug();
+//ZDump::debug();
 ?>

@@ -132,6 +132,6 @@ class PrintHelper
     }
 }
 
-PrintHelper::setArrayOptions('a',  array('style' => array('text-decoration'=>'none', 'float' => 'right')));
+/*PrintHelper::setArrayOptions('a',  array('style' => array('text-decoration'=>'none', 'float' => 'right')));
 
-echo PrintHelper::phpStormLink(__FILE__, __LINE__);
+echo PrintHelper::phpStormLink(__FILE__, __LINE__);*/
