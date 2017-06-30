@@ -12,7 +12,7 @@ use app\entities\Employee\Address;
 use app\entities\Employee\Employee;
 use app\entities\Employee\EmployeeId;
 use app\entities\Employee\Name;
-use app\entities\Employee\Phone\Phone;
+use app\entities\Employee\Phone;
 
 class EmployeeBuilder
 {

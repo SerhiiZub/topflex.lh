@@ -10,9 +10,20 @@ namespace tests\unit\entities\Employee;
 
 
 use Codeception\Test\Unit;
+use PHPUnit_Framework_TestResult;
 
 class PhoneTest extends Unit
 {
+    public function count()
+    {
+        // TODO: Implement count() method.
+    }
+
+    public function run(PHPUnit_Framework_TestResult $result = null)
+    {
+        // TODO: Implement run() method.
+    }
+
     public function testAdd()
     {
         $employee = EmployeeBuilder::instance()->build();

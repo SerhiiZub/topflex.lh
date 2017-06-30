@@ -7,6 +7,8 @@ use app\entities\Employee\EmployeeId;
 use app\entities\Employee\Name;
 use app\entities\Employee\Phone;
 use Codeception\Test\Unit;
+use PHPUnit_Framework_TestResult;
+
 /**
  * Created by PhpStorm.
  * User: Serhii Zub
@@ -15,6 +17,16 @@ use Codeception\Test\Unit;
  */
 class CreateTest extends Unit
 {
+    public function count()
+    {
+        // TODO: Implement count() method.
+    }
+
+    public function run(PHPUnit_Framework_TestResult $result = null)
+    {
+        // TODO: Implement run() method.
+    }
+
     public function testSuccess()
     {
         $employee = new Employee(

@@ -38,6 +38,7 @@
 //];*/
 
 return [
+    'basePath' => dirname(__DIR__),
     'id' => 'basic-tests',
     'language' => 'en-US',
     'components' => [
@@ -48,7 +49,8 @@ return [
             'showScriptName' => true,
         ],
         'db' => [
-            'dsn' => '',
+            'class' => 'yii\db\Connection',
+            'dsn' => 'sqlite:../_data;'
         ],
     ],
 ];
